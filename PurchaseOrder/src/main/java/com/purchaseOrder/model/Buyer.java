@@ -4,16 +4,17 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Null;
 
 
 @Entity
-@Table(name="tblUsers")
-public class User {
+@Table(name="tblbuyer")
+public class Buyer {
 	
 	@Id
-	private int User_Id;
+	private int buyer_Id;
 	
-	private String User_Name;
+	private String buyer_Name;
 
 	private String Email;
 	
@@ -21,34 +22,42 @@ public class User {
 	
 	private String Address;
 	
-	private int Mobile_no;
+	private String Mobile_no;
+	
 	
 	private String IsActive;
 	
+	
 	private LocalDate Created_date;
+	
 	
 	private String Created_by;
 	
+	
 	private String Update_by;
+	
 	
 	private LocalDate Update_date;
 	
-	private String RoleId;
-
-	public int getUser_Id() {
-		return User_Id;
+	
+	private int RoleId;
+	
+	
+	
+	public int getBuyer_Id() {
+		return buyer_Id;
 	}
 
-	public void setUser_Id(int user_Id) {
-		User_Id = user_Id;
+	public void setBuyer_Id(int buyer_Id) {
+		this.buyer_Id = buyer_Id;
 	}
 
-	public String getUser_Name() {
-		return User_Name;
+	public String getBuyer_Name() {
+		return buyer_Name;
 	}
 
-	public void setUser_Name(String user_Name) {
-		User_Name = user_Name;
+	public void setBuyer_Name(String buyer_Name) {
+		this.buyer_Name = buyer_Name;
 	}
 
 	public String getEmail() {
@@ -75,11 +84,11 @@ public class User {
 		Address = address;
 	}
 
-	public int getMobile_no() {
+	public String getMobile_no() {
 		return Mobile_no;
 	}
 
-	public void setMobile_no(int mobile_no) {
+	public void setMobile_no(String mobile_no) {
 		Mobile_no = mobile_no;
 	}
 
@@ -123,21 +132,23 @@ public class User {
 		Update_date = update_date;
 	}
 
-	public String getRoleId() {
+	public int getRoleId() {
 		return RoleId;
 	}
 
-	public void setRoleId(String roleId) {
+	public void setRoleId(int roleId) {
 		RoleId = roleId;
 	}
 
 	@Override
 	public String toString() {
-		return "User [User_Id=" + User_Id + ", User_Name=" + User_Name + ", Email=" + Email + ", Password=" + Password
-				+ ", Address=" + Address + ", Mobile_no=" + Mobile_no + ", IsActive=" + IsActive + ", Created_date="
-				+ Created_date + ", Created_by=" + Created_by + ", Update_by=" + Update_by + ", Update_date="
-				+ Update_date + ", RoleId=" + RoleId + "]";
+		return "User [buyer_Id=" + buyer_Id + ", buyer_Name=" + buyer_Name + ", Email=" + Email + ", Password="
+				+ Password + ", Address=" + Address + ", Mobile_no=" + Mobile_no + ", IsActive=" + IsActive
+				+ ", Created_date=" + Created_date + ", Created_by=" + Created_by + ", Update_by=" + Update_by
+				+ ", Update_date=" + Update_date + ", RoleId=" + RoleId + "]";
 	}
+
+
 	
 		
 }

@@ -7,22 +7,22 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.purchaseOrder.dao.UserDao;
-import com.purchaseOrder.model.User;
+import com.purchaseOrder.dao.BuyerDao;
+import com.purchaseOrder.model.Buyer;
 
 @Repository("userDao")
 @Transactional
-public class UserDaoImpl implements UserDao {
+public class BuyerDaoImpl implements BuyerDao {
 
 	@Autowired
 	SessionFactory sessionfactory;
 	@Override
-	public boolean registerUser(User uobj) {
+	public boolean registerBuyer(Buyer uobj) {
 	
 		try {
 			Session session=sessionfactory.getCurrentSession();
 			
-			session.save(uobj);
+			session.saveOrUpdate(uobj);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
