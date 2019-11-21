@@ -10,92 +10,74 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Spring</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
 <style>
-.error {
-	color: red;
-	FONT-FAMILY: Lucida Handwriting;
-	font-size: 10px;
-}
-
-body {
-	margin-left: 50px;
-	padding: 10px 20px;
+table tr td {
+	background-color: lightwheat;
+	color: black;
 	font-size: 20px;
-}
-
-table {
-	width: 500px;
-	height: 250px;
-	margin: 5px;
-	paddding: 10px 20px;
-	font-size: 20px;
-}
-
-table tr td input {
-	border-radius: 3px;
-	width: 250px;
-	height: 25px;
-}
-
-table tr td input:hover {
-	background-color: lightyellow;
 }
 </style>
-
-</head>
 <body>
-	<h2 align="center"
-		style="color: red; font-size: 20px; padding: 10px 20px;">${formLabel}</h2>
-	<f:form action="registerUser" method="post" modelAttribute="buyerObj">
-		<table align="center">
-			<tr>
-				<td>Buyer Id</td>
-				<td>:</td>
-				<td><f:input path="buyer_Id" /></td>
-				<td></td>
-			</tr>
 
-			<tr>
-				<td>Buyer Name</td>
-				<td>:</td>
-				<td><f:input path="buyer_Name" /></td>
-				<td></td>
-			</tr>
-
-			<tr>
-				<td>Email</td>
-				<td>:</td>
-				<td><f:input path="Email" /></td>
-				<td></td>
-			</tr>
-		<tr>
-				<td>Password :</td>
-				<td>:</td>
-				<td><f:password path="Password" /></td>
-				<td></td>
-			</tr>
-			
-			<tr>
-				<td>Address</td>
-				<td>:</td>
-				<td><f:input path="Address" /></td>
-				<td></td>
-			</tr>
+	<div class="container table-responsive-md" style="width: 500px;">
+		<div class="jumbotron" align="center">
+			<h1>Registration</h1>
+		</div>
+		<f:form action="registerUser" method="post" modelAttribute="buyerObj">
+			<table align="center"
+				class="form-group table-responsive table table-hover">
 				<tr>
-				<td>Mobile_no</td>
-				<td>:</td>
-				<td><f:input path="Mobile_no" /></td>
-				<td></td>
-			</tr>
-		
-			<tr>
-				<td></td>
-				<td></td>
-				<td><input type="submit" value="Submit" /></td>
-			</tr>
-		</table>
-	</f:form>
+				<tr>
+					<td>Buyer Name</td>
+					<td>:</td>
+					<td><f:input path="buyer_Name" class="form-control" /></td>
 
+				</tr>
+
+				<tr>
+					<td>Email</td>
+					<td>:</td>
+					<td><f:input path="Email" class="form-control" /></td>
+
+				</tr>
+				<tr>
+					<td>Password :</td>
+					<td>:</td>
+					<td><f:password path="Password" class="form-control" /></td>
+
+				</tr>
+
+				<tr>
+					<td>Address</td>
+					<td>:</td>
+					<td><f:input path="Address" class="form-control" /></td>
+
+				</tr>
+				<tr>
+					<td>Mobile_no</td>
+					<td>:</td>
+					<td><f:input path="Mobile_no" class="form-control" /></td>
+
+				</tr>
+
+				<tr>
+					<td></td>
+					<td></td>
+					<td><input type="submit" value="Submit"
+						class="btn btn-success" /></td>
+				</tr>
+			</table>
+		</f:form>
+	</div>
 
 </body>
 </html>

@@ -2,8 +2,10 @@ package com.purchaseOrder.model;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Null;
 
 
@@ -12,12 +14,14 @@ import javax.validation.constraints.Null;
 public class Buyer {
 	
 	@Id
+	@GeneratedValue
 	private int buyer_Id;
 	
 	private String buyer_Name;
 
 	private String Email;
 	
+	@Transient
 	private String Password;
 	
 	private String Address;
@@ -40,7 +44,6 @@ public class Buyer {
 	private LocalDate Update_date;
 	
 	
-	private int RoleId;
 	
 	
 	
@@ -132,20 +135,14 @@ public class Buyer {
 		Update_date = update_date;
 	}
 
-	public int getRoleId() {
-		return RoleId;
-	}
-
-	public void setRoleId(int roleId) {
-		RoleId = roleId;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "User [buyer_Id=" + buyer_Id + ", buyer_Name=" + buyer_Name + ", Email=" + Email + ", Password="
 				+ Password + ", Address=" + Address + ", Mobile_no=" + Mobile_no + ", IsActive=" + IsActive
 				+ ", Created_date=" + Created_date + ", Created_by=" + Created_by + ", Update_by=" + Update_by
-				+ ", Update_date=" + Update_date + ", RoleId=" + RoleId + "]";
+				+ ", Update_date=" + Update_date + "]";
 	}
 
 

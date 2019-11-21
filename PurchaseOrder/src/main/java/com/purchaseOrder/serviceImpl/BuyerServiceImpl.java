@@ -23,7 +23,7 @@ public class BuyerServiceImpl implements BuyerService {
 		uobj.setIsActive("Y");
 		uobj.setCreated_date(LocalDate.now());
 		uobj.setCreated_by("System");
-		uobj.setRoleId(1);
+
 		return buyerdao.registerBuyer(uobj);
 		
 	}
