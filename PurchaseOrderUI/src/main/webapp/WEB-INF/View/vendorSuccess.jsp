@@ -8,7 +8,8 @@
 </head>
 <body>
 
-welcome seller
+welcome vendor
+
 
 </body>
 </html>

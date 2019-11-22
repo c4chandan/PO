@@ -13,11 +13,50 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="container">
+<div class="row">
+ 
+  <div class="col-sm-6">
+ Iteams
+  <!--        <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+     
+    </ul>
+  </div>
+ -->
+ <c:forEach items="${purchaseObj}" var="i">
+      <c:out value = "${i.name}"/><p>
+      </c:forEach>
+</div>
+  <div class="col-sm-6">
+  Quantity 
+  <input type="number" min="0" pattern="\d*"/>
+  
+  </div>
+</div>
 
-welcome Buyer
 <br/>
-<a href="purchaseOrder">raise_Po</a>
 
+ <table class="table table-dark">
+    <thead>
+      <tr>
+        <th> Iteams</th>
+        <th> Quantity</th>
+       </tr>
+    </thead>
+    <tbody>
+      
+       <tr>
+       <td></td>
+       <td></td>
+       <td><input type="submit" value="submit" class="btn btn-primary" /></td>
 
+       </tr>
+     </tbody>
+  </table>
+  
+  </div>
 </body>
 </html>
