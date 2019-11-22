@@ -9,7 +9,7 @@
 <body>
 
 welcome vendor
-
+		<a href="addProductForm">Add Product</a><br/>
 
 </body>
 </html>

@@ -47,6 +47,16 @@
 <a href="getPurchaseOrder">Purchase ORder</a><br/>
 <a href="getLoginForm">Login Page</a>
 
+	<h1 style="text-align: center;font-family: verdana;color: green">
+			${myData}
+		</h1>
+		
+		<hr/>
+		
+
+		<a href="viewAllProducts">View All Products</a><br/>
+		
+
 
 </body>
 </html>

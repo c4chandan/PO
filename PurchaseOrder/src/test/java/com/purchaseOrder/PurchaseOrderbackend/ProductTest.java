@@ -1,12 +1,12 @@
 package com.purchaseOrder.PurchaseOrderbackend;
 
 
-import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
 import static java.lang.System.out;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -39,7 +39,8 @@ public class ProductTest {
 	}
 	
 	@Test
-	@Ignore
+	
+@Ignore
 	public void addProductTest(){
 		Products p=new Products();
 		p.setProductName("Realme X2 Pro");
