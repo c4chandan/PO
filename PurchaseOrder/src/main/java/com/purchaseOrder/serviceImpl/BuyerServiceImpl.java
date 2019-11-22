@@ -20,12 +20,20 @@ public class BuyerServiceImpl implements BuyerService {
 	
 	@Override
 	public boolean registerBuyer(Buyer uobj) {
+		uobj.setRole("Buyer");
 		uobj.setIsActive("Y");
 		uobj.setCreated_date(LocalDate.now());
 		uobj.setCreated_by("System");
 
 		return buyerdao.registerBuyer(uobj);
 		
+	}
+
+	@Override
+	public Buyer Validatelogin(String Email, String password) {
+		
+		
+		return  buyerdao.Validatelogin(Email, password);
 	}
 
 }

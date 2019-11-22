@@ -13,9 +13,9 @@
 <form action="Loginform" method="post">
 <table>
 <tr> 
-<td> User Id</td>
+<td> User Email</td>
 <td>:</td>
-<td><input type="number" name="userId"/></td>
+<td><input type="email" name="Email"/></td>
 </tr>
 <tr> 
 <td>Password</td>
