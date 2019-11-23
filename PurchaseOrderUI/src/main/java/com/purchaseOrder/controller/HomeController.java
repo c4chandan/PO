@@ -1,16 +1,18 @@
 package com.purchaseOrder.controller;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 
 import com.purchaseOrder.model.Buyer;
 import com.purchaseOrder.services.BuyerService;
@@ -41,48 +43,69 @@ public class HomeController {
 
 	// successfully registered
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-	public ModelAndView registerUserDetail(@ModelAttribute("buyerObj") Buyer buyerObj) {
+	public ModelAndView registerUserDetail(@Valid @ModelAttribute("buyerObj") Buyer buyerObj, BindingResult result) {
 
+		if (result.hasErrors()) {
+
+			
+
+			System.out.println(result.getAllErrors());
+
+			ModelAndView mv = new ModelAndView("Registration");
+			mv.addObject("error", "User has not registered ..... plzz try again");
+			return mv;
+		}
 		ModelAndView mv = new ModelAndView("success");
-
 		service.registerBuyer(buyerObj);
 		mv.addObject("msg", "User has been registered succesfully. Now u can Login");
+
 		return mv;
+
 	}
 
 	// calling login form
 	@RequestMapping(value = "/getLoginForm", method = RequestMethod.GET)
-	public String signIn()
+	public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
 
-	{
-		return "Login";
+		ModelAndView mv = new ModelAndView("Login");
+		mv.addObject("login", new Buyer());
+		return mv;
 
 	}
 
-	@Autowired
-	HttpSession session;
-
-
 	@RequestMapping(value = "/Loginform", method = RequestMethod.POST)
-	public String SignInfrom(@RequestParam String Email, @RequestParam String password) {
-		Buyer bobj = service.Validatelogin(Email, password);
+	public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute("login") Buyer login) {
 
-		session.setAttribute("uobj1", bobj);
+		System.out.println(login);
+
+		ModelAndView mv = null;
+
+		Buyer bobj = service.Validatelogin(login);
+
 		if (bobj != null) {
 
 			if (bobj.getRole().equals("Buyer"))
 
 			{
-
-				return "buyerSuccess";
+				mv = new ModelAndView("buyerSuccess");
 
 			} else if (bobj.getRole().equals("Seller")) {
 
-				return "SellerSuccess";
-			}
-		}
+				mv = new ModelAndView("SellerSuccess");
 
-		return "VendorSuccess";
+			}
+
+			else if (bobj.getRole().equals("Vendor")) {
+				mv = new ModelAndView("VendorSuccess");
+
+			}
+		} else {
+			mv = new ModelAndView("Login");
+			mv.addObject("msg", "please enter the valid login Email and Password");
+
+		}
+		return mv;
 
 	}
 

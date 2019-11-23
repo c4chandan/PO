@@ -35,14 +35,14 @@ public class BuyerDaoImpl implements BuyerDao {
 		return false;
 	}
 	@Override
-	public Buyer Validatelogin(String Email, String password) {
+	public Buyer Validatelogin(Buyer uobj) {
 		try {
 
 			Session session=sessionfactory.getCurrentSession();
-			Query query=session.createQuery("from com.purchaseOrder.model.Buyer where Email=:email and password=:password");
-			query.setParameter("email", Email);
-			query.setParameter("password",password);
-			List<Buyer>list=query.list();	
+			Query query=session.createQuery("from com.purchaseOrder.model.Buyer where Email=:x and password=:y");
+			query.setParameter("x",uobj.getEmail());
+			query.setParameter("y",uobj.getPassword());
+				List<Buyer>list=query.list();	
 			if(list==null) {
 				session.close();
 		

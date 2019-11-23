@@ -9,11 +9,15 @@
 <html>
 <head>
 <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <style>
 table tr td {
@@ -21,12 +25,18 @@ table tr td {
 	color: black;
 	font-size: 20px;
 }
+
+.error {
+	color: red;
+		font-size: 20px;
+}
 </style>
 
 
 
 <body>
 
+	<f:errors path="*" />
 	<div class="container table-responsive-md" style="width: 500px;">
 		<div class="jumbotron" align="center">
 			<h1>Registration</h1>
@@ -39,32 +49,34 @@ table tr td {
 					<td>Buyer Name</td>
 					<td>:</td>
 					<td><f:input path="buyer_Name" class="form-control" /></td>
-
+					<td><f:errors path="buyer_Name" cssClass="error" /></td>
 				</tr>
 
 				<tr>
 					<td>Email</td>
 					<td>:</td>
 					<td><f:input path="Email" class="form-control" /></td>
-
+					<td><f:errors path="Email" cssClass="error" /></td>
 				</tr>
 				<tr>
 					<td>Password :</td>
 					<td>:</td>
 					<td><f:password path="Password" class="form-control" /></td>
-
+					<td><f:errors path="Password" cssClass="error" /></td>
 				</tr>
 
 				<tr>
 					<td>Address</td>
 					<td>:</td>
 					<td><f:input path="Address" class="form-control" /></td>
+					<td><f:errors path="Address" cssClass="error" /></td>
 
 				</tr>
 				<tr>
 					<td>Mobile_no</td>
 					<td>:</td>
 					<td><f:input path="Mobile_no" class="form-control" /></td>
+					<td><f:errors path="Mobile_no" cssClass="error" /></td>
 
 				</tr>
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+	
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -18,42 +19,71 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	
+<script>
+    $(document).ready(function(){
+        $(".add-row").click(function(){
+            var items = $(".name option:selected").val();
+            var quantity = $("#quantity").val();
+            var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + items + "</td><td>" + quantity + "</td></tr>";
+            $("table ").append(markup);
+        });
+        
+        // Find and remove selected table rows
+        $(".delete-row").click(function(){
+            $("table tbody").find('input[name="record"]').each(function(){
+                if($(this).is(":checked")){
+                    $(this).parents("tr").remove();
+                }
+            });
+        });
+    });    
+</script>
+
+
 </head>
 <body>
-	<div class="container">
-		<h1 style="color: green;">Raise Po</h1>
-		<table class="table table-borderless  table table-hover table-dark">
-			<thead>
-				<tr>
-					<th>select the Iteams</th>
-					<th>select the Quantity</th>
 
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<select class="form-control">
-						<option>Select your products</option>
+	<div class="container">
+	
+<h1 style="color: green;">Raise Po</h1>
+ 		<form action="purchaseOrder" method="post">
+ 	<select class="form-control name" name="items">
+						<option value="">Select your products</option>
 						<c:forEach items="${productDetails}" var="pObj">
-						<option> 
+						<option value="${pObj.productName} "> 
 						${pObj.productName} 
 						</option>
 						</c:forEach>
 						</select>
-						
-						</td>
-					<td><input type="number" min="0" pattern="\d*"  class="form-control" placeholder="Quantity" required/></td>
+						<input type="number" min="0" pattern="\d*"  class="form-control" placeholder="Quantity" id="quantity" required/>
+						<input type="button" value="Add"	class="btn btn-success add-row" />
 
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td><input type="submit" value="submit"	class="btn btn-primary" /></td>
-				</tr>
 
-			</tbody>
-		</table>
+
+		    <table class="table-responsive table-dark table table-hover">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>items</th>
+                <th>quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+        </tr>
+        </tbody>
+  </table>
+			<div class="row">
+			<div class="col">	<button type="button" class="delete-row">Delete Row</button>
+			</div>		
+	<div class="col"><input type="submit" value="submit"	class="btn btn-primary" /></div>
+		</div>
+
+	
+	</form>
 	</div>
 	</body>
 </html>

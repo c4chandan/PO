@@ -32,10 +32,10 @@ public class BuyerServiceImpl implements BuyerService {
 	}
 
 	@Override
-	public Buyer Validatelogin(String Email, String password) {
+	public Buyer Validatelogin(Buyer uobj) {
 		
 		
-		return  buyerdao.Validatelogin(Email, password);
+		return  buyerdao.Validatelogin(uobj);
 	}
 
 	@Override

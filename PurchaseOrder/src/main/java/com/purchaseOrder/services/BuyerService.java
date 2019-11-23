@@ -8,7 +8,7 @@ import com.purchaseOrder.model.Products;
 public interface BuyerService {
 
 	public boolean registerBuyer(Buyer uobj);
-	public Buyer Validatelogin(String Email,String password);
+	public Buyer Validatelogin(Buyer uobj);
 	public boolean addProduct(Products pObj);
 	public boolean deleteProduct(Products pObj);
 	public boolean updateProduct(Products pObj);

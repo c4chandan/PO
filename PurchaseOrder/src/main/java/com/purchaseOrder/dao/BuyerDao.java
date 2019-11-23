@@ -6,5 +6,5 @@ public interface BuyerDao {
 
 	public boolean registerBuyer(Buyer uobj);
 
-	public Buyer Validatelogin(String Email,String password);
+	public Buyer Validatelogin(Buyer uobj);
 }
