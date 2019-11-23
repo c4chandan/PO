@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,85 +15,126 @@ public class PurchaseOrder {
 	
 	@Id
 	@GeneratedValue
-	private int po_Id;
+	private int id;
+
+	private int poId;
+	private int buyerId;			//mapped with user table
+	private int sellerId;         //from user table
+	private int vendorId;           //from user table
 	
-    private String po_name;
+	private int productId;      //from product table
+
+	private int poQuantity;
 	
-    private int products_id;
-    
-    private int buyer_id;
+	private LocalDate createdDate;
+	private LocalDate deliveryDate;
+	
+	@OneToOne
+	@JoinColumn(name="buyerId",insertable=false,updatable=false)
+	Buyer buyerObj;
 
-    private String status;
-    
-    private LocalDate created_date;
+	@OneToOne
+	@JoinColumn(name="productId",insertable=false,updatable=false)
+	Products productObj;
 
-    private int quantity;
-
-	public int getPo_Id() {
-		return po_Id;
+	public int getId() {
+		return id;
 	}
 
-	public void setPo_Id(int po_Id) {
-		this.po_Id = po_Id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getPo_name() {
-		return po_name;
+	public int getPoId() {
+		return poId;
 	}
 
-	public void setPo_name(String po_name) {
-		this.po_name = po_name;
+	public void setPoId(int poId) {
+		this.poId = poId;
 	}
 
-	public int getBuyer_id() {
-		return buyer_id;
+	public int getBuyerId() {
+		return buyerId;
 	}
 
-	public void setBuyer_id(int buyer_id) {
-		this.buyer_id = buyer_id;
+	public void setBuyerId(int buyerId) {
+		this.buyerId = buyerId;
 	}
 
-	public String getStatus() {
-		return status;
+	public int getSellerId() {
+		return sellerId;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setSellerId(int sellerId) {
+		this.sellerId = sellerId;
 	}
 
-	public LocalDate getCreated_date() {
-		return created_date;
+	public int getVendorId() {
+		return vendorId;
 	}
 
-	public void setCreated_date(LocalDate created_date) {
-		this.created_date = created_date;
+	public void setVendorId(int vendorId) {
+		this.vendorId = vendorId;
 	}
 
-	public int getQuantity() {
-		return quantity;
+	public int getProductId() {
+		return productId;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 
-	public int getProducts_id() {
-		return products_id;
+	public int getPoQuantity() {
+		return poQuantity;
 	}
 
-	public void setProducts_id(int products_id) {
-		this.products_id = products_id;
+	public void setPoQuantity(int poQuantity) {
+		this.poQuantity = poQuantity;
+	}
+
+	public Buyer getBuyerObj() {
+		return buyerObj;
+	}
+
+	public void setBuyerObj(Buyer buyerObj) {
+		this.buyerObj = buyerObj;
+	}
+
+	public Products getProductObj() {
+		return productObj;
+	}
+
+	public void setProductObj(Products productObj) {
+		this.productObj = productObj;
+	}
+
+	
+	public LocalDate getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDate createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public LocalDate getDeliveryDate() {
+		return deliveryDate;
+	}
+
+	public void setDeliveryDate(LocalDate deliveryDate) {
+		this.deliveryDate = deliveryDate;
 	}
 
 	@Override
 	public String toString() {
-		return "PurcahseOrder [po_Id=" + po_Id + ", po_name=" + po_name + ", products_id=" + products_id + ", buyer_id="
-				+ buyer_id + ", status=" + status + ", created_date=" + created_date + ", quantity=" + quantity + "]";
+		return "PurchaseOrder [id=" + id + ", poId=" + poId + ", buyerId=" + buyerId + ", sellerId=" + sellerId
+				+ ", vendorId=" + vendorId + ", productId=" + productId + ", poQuantity=" + poQuantity
+				+ ", createdDate=" + createdDate + ", deliveryDate=" + deliveryDate + ", buyerObj=" + buyerObj
+				+ ", productObj=" + productObj + "]";
 	}
 
 	
-
-    
 		
 }
     

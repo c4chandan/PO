@@ -42,16 +42,17 @@ private static PurchaseOrderDao purchaseorder;
 	public void addPurchaseOrderTest()
 	{
 		PurchaseOrder uObj = new PurchaseOrder();
-		uObj.setBuyer_id(102);
-		//uObj.setPo_Id(10);
-		uObj.setPo_name("secondorder");
-		uObj.setProducts_id(101111);
-		uObj.setQuantity(120);
-		uObj.setCreated_date(LocalDate.now());
-		uObj.setStatus("pending");
-		boolean b = purchaseorder.addPurchaseOrder(uObj);
-
-		assertTrue("Problem in adding product", b);
+		uObj.setBuyerId(1);
+		uObj.setCreatedDate(LocalDate.now());
+		uObj.setSellerId(2);
+		uObj.setVendorId(3);
+		uObj.setPoId(80);
+		uObj.setProductId(1003);
+		uObj.setPoQuantity(500);
+		LocalDate date = LocalDate.now();
+		uObj.setDeliveryDate(date.plusDays(30));
+		boolean obj = purchaseorder.addPurchaseOrder(uObj);
+		assertTrue("Problem in adding product", obj);
 
 	}
 
