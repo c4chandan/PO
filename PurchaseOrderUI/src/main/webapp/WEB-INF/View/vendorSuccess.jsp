@@ -17,8 +17,19 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style>
+
+#box {
+    width: 1100px;
+    margin-left: 120px;
+        padding:5px;
+      border :1px solid black;
+ }
+</style>
+
 </head>
-<body>
+
+<body id="box">
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
   <a class="navbar-brand" href="#">Purchase Order</a>

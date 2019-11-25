@@ -25,12 +25,45 @@
 	FONT-FAMILY: Lucida Handwriting;
 	font-size: 10px;
 }
+#box {
+    width: 1100px;
+    margin-left: 120px;
+        padding:5px;
+      border :1px solid black;
+ }
 </style>
 
 
 </head>
-<body>
+<body id="box">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark navbar-fixed-top">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Purchase Order</a>
 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="getSignUpPage">Registration</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="getLoginForm">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<br/>
 	<f:errors path="*" />
 	<f:form action="Loginform" method="post" modelAttribute="login" >
 

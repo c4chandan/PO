@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
-	
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
@@ -19,9 +19,9 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <script>
     $(document).ready(function(){
     	var productName;
@@ -56,58 +56,91 @@
         
     });    
 </script>
-
+<style>
+#box {
+	width: 1100px;
+	margin-left: 120px;
+	padding: 5px;
+	border: 1px solid black;
+}
+</style>
 
 </head>
-<body>
+<body id="box">
+	<nav
+		class="navbar navbar-expand-md bg-dark navbar-dark navbar-fixed-top">
+	<!-- Brand --> <a class="navbar-brand" href="#">Purchase Order</a>
 
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#collapsibleNavbar">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<!-- Navbar links -->
+	<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="getSignUpPage">Registration</a>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="getLoginForm">Login</a>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+		</ul>
+	</div>
+	</nav>
+
+	<br />
 	<div class="container">
-	
-<h1 style="color: green;">Raise Po</h1>
- 		<form action="purchaseOrder" method="post">
- 		
- 		<ul class="list-group list-group-horizontal">
-  <li class="list-group-item"><select class="form-control name" name="items">
+
+		<h1 style="color: green;">Raise Po</h1>
+		<form action="purchaseOrder" method="post">
+
+			<ul class="list-group list-group-horizontal">
+				<li class="list-group-item"><select class="form-control name"
+					name="items">
 						<option value="">Select your products</option>
 						<c:forEach items="${productDetails}" var="pObj">
-						<option value="${pObj.productId} "> 
-							${pObj.productName} 
-						</option>
+							<option value="${pObj.productId} ">${pObj.productName}</option>
 						</c:forEach>
-						</select> </li>
-						
-  <li class="list-group-item"><input type="number" min="0" pattern="\d*"  class="form-control" placeholder="Quantity" id="quantity" required/> </li>
-  
-</ul>
- 		<br/>
- 					<input type="button" value="Add"	class="btn btn-success add-row" /><br/>
+				</select></li>
 
-<br/>
+				<li class="list-group-item"><input type="number" min="0"
+					pattern="\d*" class="form-control" placeholder="Quantity"
+					id="quantity" required /></li>
 
-		    <table class="table table-responsive  table-hover table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th>Select</th>
-                <th>Product Id</th>
-                <th>Product Name</th>
-                <th>quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-        
-        </tbody>
-  </table>
+			</ul>
+			<br /> <input type="button" value="Add"
+				class="btn btn-success add-row" /><br /> <br />
+
+			<table class="table table-responsive  table-hover table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Select</th>
+						<th>Product Id</th>
+						<th>Product Name</th>
+						<th>quantity</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
 			<div class="row">
-			<div class="col-4">	<button type="button" class="delete-row btn btn-danger">Delete Row</button>
-			</div>		
-	<div class="col-4"><input type="button" value="submit"	class="btn btn-primary" id="raisePO"/></div>
-		</div>
+				<div class="col-4">
+					<button type="button" class="delete-row btn btn-danger">Delete
+						Row</button>
+				</div>
+				<div class="col-4">
+					<input type="button" value="submit" class="btn btn-primary"
+						id="raisePO" />
+				</div>
+			</div>
 
-	
-	</form>
+
+		</form>
 	</div>
-	</body>
-	<script>
+</body>
+<script>
 		$(document).ready(function(){
 			 
 			var purchaseOrderList = [];
