@@ -55,39 +55,39 @@ table tr td {
 				<tr>
 					<td>Email</td>
 					<td>:</td>
-					<td><f:input path="Email" class="form-control" /></td>
-					<td><f:errors path="Email" cssClass="error" /></td>
+					<td><f:input path="email" class="form-control" /></td>
+					<td><f:errors path="email" cssClass="error" /></td>
 				</tr>
 				<tr>
 					<td>Password :</td>
 					<td>:</td>
-					<td><f:password path="Password" class="form-control" /></td>
-					<td><f:errors path="Password" cssClass="error" /></td>
+					<td><f:password path="password" class="form-control" /></td>
+					<td><f:errors path="password" cssClass="error" /></td>
 				</tr>
 
 				<tr>
 					<td>Address</td>
 					<td>:</td>
-					<td><f:input path="Address" class="form-control" /></td>
-					<td><f:errors path="Address" cssClass="error" /></td>
+					<td><f:input path="address" class="form-control" /></td>
+					<td><f:errors path="address" cssClass="error" /></td>
 
 				</tr>
 				<tr>
 					<td>Mobile_no</td>
 					<td>:</td>
-					<td><f:input path="Mobile_no" class="form-control" /></td>
-					<td><f:errors path="Mobile_no" cssClass="error" /></td>
+					<td><f:input path="mobile_no" class="form-control" /></td>
+					<td><f:errors path="mobile_no" cssClass="error" /></td>
 
 				</tr>
 
 				<tr>
 					<td></td>
 					<td></td>
-					<td><input type="submit" value="Submit"
-						class="btn btn-success" /></td>
+					<td><input type="submit" value="Submit" class="btn btn-success" /></td>
 				</tr>
 			</table>
 		</f:form>
+		${error}
 	</div>
 
 </body>

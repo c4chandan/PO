@@ -1,5 +1,7 @@
 package com.purchaseOrder.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.purchaseOrder.model.Buyer;
+import com.purchaseOrder.model.PurchaseOrder;
 import com.purchaseOrder.services.BuyerService;
+import com.purchaseOrder.services.PurchaseOrderServiceDao;
 
 @Controller
 public class HomeController {
@@ -75,6 +79,9 @@ public class HomeController {
 	
 	@Autowired
 	HttpSession session;
+	
+	@Autowired
+	PurchaseOrderServiceDao poObj;
 
 	@RequestMapping(value = "/Loginform", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
@@ -92,16 +99,21 @@ public class HomeController {
 
 			{
 				session.setAttribute("userObj",bobj);
+				
 				mv = new ModelAndView("buyerSuccess");
 
 			} else if (bobj.getRole().equals("Seller")) {
-
+				
+				List<PurchaseOrder> pObj= poObj.viewAllPo();
+				mv.addObject("poObj", pObj);
+				System.out.println("I am in login procerss and the value of pobj is "+pObj+" ");
 				mv = new ModelAndView("SellerSuccess");
 
 			}
 
 			else if (bobj.getRole().equals("Vendor")) {
-				mv = new ModelAndView("VendorSuccess");
+				System.out.println("i m here");
+				mv = new ModelAndView("vendorSuccess");
 
 			}
 		} else {
@@ -113,11 +125,5 @@ public class HomeController {
 
 	}
 
-	@RequestMapping(value = "/getPurchaseOrder", method = RequestMethod.GET)
-	public String PoForm()
 
-	{
-		return "PoForm";
-
-	}
 }

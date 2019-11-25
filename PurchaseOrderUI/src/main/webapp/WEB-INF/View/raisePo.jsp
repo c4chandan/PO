@@ -65,21 +65,27 @@
 	
 <h1 style="color: green;">Raise Po</h1>
  		<form action="purchaseOrder" method="post">
- 	<select class="form-control name" name="items">
+ 		
+ 		<ul class="list-group list-group-horizontal">
+  <li class="list-group-item"><select class="form-control name" name="items">
 						<option value="">Select your products</option>
 						<c:forEach items="${productDetails}" var="pObj">
 						<option value="${pObj.productId} "> 
 							${pObj.productName} 
 						</option>
 						</c:forEach>
-						</select>
-						<input type="number" min="0" pattern="\d*"  class="form-control" placeholder="Quantity" id="quantity" required/>
-						<input type="button" value="Add"	class="btn btn-success add-row" />
+						</select> </li>
+						
+  <li class="list-group-item"><input type="number" min="0" pattern="\d*"  class="form-control" placeholder="Quantity" id="quantity" required/> </li>
+  
+</ul>
+ 		<br/>
+ 					<input type="button" value="Add"	class="btn btn-success add-row" /><br/>
 
+<br/>
 
-
-		    <table class="table-responsive table-dark table table-hover">
-        <thead>
+		    <table class="table table-responsive  table-hover table-striped">
+        <thead class="thead-dark">
             <tr>
                 <th>Select</th>
                 <th>Product Id</th>
@@ -92,9 +98,9 @@
         </tbody>
   </table>
 			<div class="row">
-			<div class="col">	<button type="button" class="delete-row">Delete Row</button>
+			<div class="col-4">	<button type="button" class="delete-row btn btn-danger">Delete Row</button>
 			</div>		
-	<div class="col"><input type="button" value="submit"	class="btn btn-primary" id="raisePO"/></div>
+	<div class="col-4"><input type="button" value="submit"	class="btn btn-primary" id="raisePO"/></div>
 		</div>
 
 	

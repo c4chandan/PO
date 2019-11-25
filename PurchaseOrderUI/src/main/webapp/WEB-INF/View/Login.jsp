@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-       
+	pageEncoding="ISO-8859-1"%>
 
-<%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+
+<%@taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,8 +20,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
-
-
 .error {
 	color: red;
 	FONT-FAMILY: Lucida Handwriting;
@@ -33,28 +31,33 @@
 </head>
 <body>
 
-<f:errors path="*"/>
-<f:form action="Loginform" method="post" modelAttribute="login">
-<table>
-<tr> 
-<td> User Email</td>
-<td>:</td>
-<td><td><f:input path="Email" class="form-control" /></td></td>
-<td><f:errors path="Email" cssClass="error" /></td>
-</tr>
-<tr> 
-<td>Password</td>
-<td>:</td>
-<td><f:password path="password" class="form-control"/></td>
-<td><f:errors path="Password" cssClass="error" /></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td><input type="submit" name="submit" value="submit"/></td>
-</tr>
-</table>
-</f:form>
-  <h3 style="color:red;font-size:15px">${msg}</h3>
+	<f:errors path="*" />
+	<f:form action="Loginform" method="post" modelAttribute="login" >
+
+		<table  align="center" class="table">
+			<tr>
+				<td>User Email</td>
+				<td>:</td>
+			
+				<td><f:input path="email" class="form-control" /></td>
+				
+				<td><f:errors path="email" cssClass="error" /></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td>:</td>
+				<td><f:password path="password" class="form-control" /></td>
+				<td><f:errors path="password" cssClass="error" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><input type="submit" name="submit" value="submit" class="btn btn-success" /></td>
+			</tr>
+		</table>
+	
+	</f:form>
+	
+	<h3 style="color: red; font-size: 15px">${msg}</h3>
 </body>
 </html>

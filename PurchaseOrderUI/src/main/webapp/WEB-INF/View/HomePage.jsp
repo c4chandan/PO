@@ -46,7 +46,10 @@
         <a class="nav-link" href="#">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Raise Po</a>
+        <a class="nav-link" href="getSignUpPage">Registration</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="getLoginForm">Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About Us</a>
@@ -56,21 +59,15 @@
 </nav>
  
 
-<h2>${msj} </h2>
 
-<a href="getSignUpPage">registration</a><br/>
-
-<a href="getPurchaseOrder">Purchase ORder</a><br/>
-<a href="getLoginForm">Login Page</a>
 
 	<h1 style="text-align: center;font-family: verdana;color: green">
-			${myData}
+			${msj}
 		</h1>
 		
 		<hr/>
 		
 
-		<a href="viewAllProducts">View All Products</a><br/>
 		
 		
 
