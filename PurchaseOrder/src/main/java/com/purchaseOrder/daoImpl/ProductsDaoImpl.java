@@ -71,7 +71,7 @@ public class ProductsDaoImpl implements ProductsDao {
 			return pro;
 			}
 			catch(Exception e){
-				e.printStackTrace();
+				e.printStackTrace(); 
 			}
 			return null;
 	}

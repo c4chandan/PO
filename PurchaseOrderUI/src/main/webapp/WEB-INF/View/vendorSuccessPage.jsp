@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-welcome vendor
-		<a href="addProductForm">Add Product</a><br/>
-
+${msg}
 </body>
 </html>

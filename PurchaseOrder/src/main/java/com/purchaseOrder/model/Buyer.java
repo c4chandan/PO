@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -23,22 +25,25 @@ public class Buyer {
 	private int buyer_Id;
 
 	@NotEmpty
-	@Size(min = 2, message = "User Name should be Atleast 4")
+	@Size(min = 3, message = "User Name should be Atleast 3")
 	private String buyer_Name;
 
 	@Email(message = "email is not valid")
+	@NotEmpty
 	private String email;
 
 	@NotEmpty
-	@Size(min = 1, message = "User password should be Atleast 4")
+	@Size(min = 4, message = "User password should be Atleast 4")
 	@Column(name = "buyer_password")
 	private String password;
 
 	@NotEmpty
 	private String address;
 
-	@NotNull
-	private long mobile_no;
+	@Pattern(regexp="([0-9]{10})")
+	@NotEmpty
+	@Max(value=10,message="Mobile no should be equal to 10 digit")
+	private String mobile_no;
 
 	
 	private String isActive;
@@ -109,12 +114,12 @@ public class Buyer {
 	}
 
 
-	public long getMobile_no() {
+	public String getMobile_no() {
 		return mobile_no;
 	}
 
 
-	public void setMobile_no(long mobile_no) {
+	public void setMobile_no(String mobile_no) {
 		this.mobile_no = mobile_no;
 	}
 

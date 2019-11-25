@@ -40,12 +40,12 @@ public class ProductTest {
 	
 	@Test
 	
-@Ignore
+
 	public void addProductTest(){
 		Products p=new Products();
-		p.setProductName("Realme X2 Pro");
-		p.setProductDes("Realme Flagship phones");
-		p.setProductPrice(30000);		
+		p.setProductName("Realme xs20 Pro");
+		p.setProductDesc("Realme Flagship phones");
+		p.setProductPrice(300000);		
 	
 		boolean r=productDaoObj.addProduct(p);
 		assertTrue("Problem in Adding User", r);

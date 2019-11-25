@@ -1,9 +1,12 @@
 package com.purchaseOrder.daoImpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +15,7 @@ import com.purchaseOrder.model.PurchaseOrder;
 
 @Transactional
 @Repository("purchaseOrderDao")
-public class PurchaseOrderDaoImpl implements PurchaseOrderDao {
+public class PurchaseOrderImpl implements PurchaseOrderDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
@@ -23,6 +26,7 @@ public class PurchaseOrderDaoImpl implements PurchaseOrderDao {
 		try {
 			Session session=sessionFactory.getCurrentSession();
 	
+			
 			session.persist(pobj);
 			return true;
 
@@ -32,4 +36,21 @@ public class PurchaseOrderDaoImpl implements PurchaseOrderDao {
 		}
 		return false;
 	}
+
+
+	@Override
+	public List<PurchaseOrder> viewAllPo() {
+		try {
+			Session session=sessionFactory.getCurrentSession();
+			Query q=session.createQuery("from com.purchaseOrder.model.PurchaseOrder where status='sent to seller'");
+	        return q.list();
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
 }

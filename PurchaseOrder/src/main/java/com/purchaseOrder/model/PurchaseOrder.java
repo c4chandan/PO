@@ -30,9 +30,12 @@ public class PurchaseOrder {
 	@OneToMany(mappedBy="purchaseOrderObj",cascade=CascadeType.ALL)
 	private List<PurchaseOrderItems> purchaseOrderItemsObj;
 
+	private String status;
+	
 	public int getPurchaseOrderId() {
 		return purchaseOrderId;
 	}
+	
 
 	public void setPurchaseOrderId(int purchaseOrderId) {
 		this.purchaseOrderId = purchaseOrderId;
@@ -62,13 +65,22 @@ public class PurchaseOrder {
 		this.purchaseOrderItemsObj = purchaseOrderItemsObj;
 	}
 
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
 	@Override
 	public String toString() {
 		return "PurchaseOrder [purchaseOrderId=" + purchaseOrderId + ", buyerObj=" + buyerObj + ", sellerObj="
-				+ sellerObj + "]";
+				+ sellerObj + ", purchaseOrderItemsObj=" + purchaseOrderItemsObj + ", status=" + status + "]";
 	}
-	
-	
-	
+
 		
 }
