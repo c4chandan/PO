@@ -24,11 +24,24 @@
 	
 <script>
     $(document).ready(function(){
+    	var productName;
         $(".add-row").click(function(){
             var items = $(".name option:selected").val();
             var quantity = $("#quantity").val();
-            var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + items + "</td><td>" + quantity + "</td></tr>";
-            $("table ").append(markup);
+            
+            
+            
+            
+            $.get("getProductNameById?productId="+items, function(data, status){
+                productObj=data;
+                
+                
+                var markup = "<tr><td><input type='checkbox' name='record'></td><td>"+items+"</td><td>" + productObj.productName + "</td><td>" + quantity + "</td></td>";
+                $("table ").append(markup);
+                
+              });
+            
+            
         });
         
         // Find and remove selected table rows
@@ -39,6 +52,8 @@
                 }
             });
         });
+       
+        
     });    
 </script>
 
@@ -53,8 +68,8 @@
  	<select class="form-control name" name="items">
 						<option value="">Select your products</option>
 						<c:forEach items="${productDetails}" var="pObj">
-						<option value="${pObj.productName} "> 
-						${pObj.productName} 
+						<option value="${pObj.productId} "> 
+							${pObj.productName} 
 						</option>
 						</c:forEach>
 						</select>
@@ -67,23 +82,83 @@
         <thead>
             <tr>
                 <th>Select</th>
-                <th>items</th>
+                <th>Product Id</th>
+                <th>Product Name</th>
                 <th>quantity</th>
             </tr>
         </thead>
         <tbody>
-        <tr>
-        </tr>
+        
         </tbody>
   </table>
 			<div class="row">
 			<div class="col">	<button type="button" class="delete-row">Delete Row</button>
 			</div>		
-	<div class="col"><input type="submit" value="submit"	class="btn btn-primary" /></div>
+	<div class="col"><input type="button" value="submit"	class="btn btn-primary" id="raisePO"/></div>
 		</div>
 
 	
 	</form>
 	</div>
 	</body>
+	<script>
+		$(document).ready(function(){
+			 
+			var purchaseOrderList = [];
+	        $("#raisePO").click(function() {
+	        	console.log('Hello 1');
+	        	var table = $("table tbody");
+	        	console.log('Hello 2');
+	        	 
+	        	table.find('tr').each(function (i, el) {
+	        		 console.log('Hello 3');
+	        	        var $tds = $(this).find('td'),
+	        	        	
+	        	            pId = $tds.eq(1).text(),
+	        	            Quantity = $tds.eq(3).text();
+	        	        
+	        	        // do something with productId, product, Quantity
+	        	        
+	        	        
+	        	        
+	        	        var myObj = {
+	        	        		  productId: pId,
+	        	        		  quantity:Quantity
+	        	        		  
+	        	        		};
+	        	        purchaseOrderList.push(myObj);
+	        	    });
+	        	console.log(purchaseOrderList);
+	        	
+	         
+	        $.ajax({
+	            type: "POST",
+	            url: "raisePO",
+	            data: JSON.stringify(purchaseOrderList),
+	            contentType: "application/json; charset=utf-8",
+	            dataType: "json",
+	            success: function(data){
+	                console.log(data);
+	           },
+	            error: function(err) {
+	                console.log(err);
+	            }
+	        });
+		});
+		});
+	</script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

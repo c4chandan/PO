@@ -5,9 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.purchaseOrder.dao.ProductsDao;
+import com.purchaseOrder.model.Products;
 
 @Controller
 public class productsController {
@@ -28,6 +31,14 @@ public class productsController {
 		ModelAndView mv = new ModelAndView("ViewProducts");
 		mv.addObject("productDetails", productdao.viewAllProducts());
 		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getProductNameById",method=RequestMethod.GET)
+	public Products getProductById(@RequestParam int productId) {
+		
+		Products pObj=productdao.getProductById(productId);
+		return pObj;
 	}
 
 }

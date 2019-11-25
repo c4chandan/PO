@@ -14,7 +14,7 @@ import com.purchaseOrder.dao.BuyerDao;
 import com.purchaseOrder.model.Buyer;
 
 @Repository("userDao")
-
+@org.springframework.transaction.annotation.Transactional
 public class BuyerDaoImpl implements BuyerDao {
 
 	@Autowired
@@ -64,4 +64,32 @@ public class BuyerDaoImpl implements BuyerDao {
 		return null;
 	
 }
+	@Override
+	public Buyer getSeller() {
+		try {
+
+			Session session=sessionfactory.getCurrentSession();
+			Query query=session.createQuery("from com.purchaseOrder.model.Buyer where role='Seller'");
+			
+				List<Buyer>list=query.list();	
+			if(list==null) {
+				session.close();
+		
+		}
+		else {
+			if(list.size()!=0)
+			{
+				
+				return list.get(0);
+	
+			}
+		}
+		
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 }

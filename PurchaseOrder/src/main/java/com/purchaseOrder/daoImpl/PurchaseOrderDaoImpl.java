@@ -23,7 +23,7 @@ public class PurchaseOrderDaoImpl implements PurchaseOrderDao {
 		try {
 			Session session=sessionFactory.getCurrentSession();
 	
-			session.saveOrUpdate(pobj);
+			session.persist(pobj);
 			return true;
 
 			

@@ -2,7 +2,7 @@ package com.purchaseOrder.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +72,9 @@ public class HomeController {
 		return mv;
 
 	}
+	
+	@Autowired
+	HttpSession session;
 
 	@RequestMapping(value = "/Loginform", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
@@ -88,6 +91,7 @@ public class HomeController {
 			if (bobj.getRole().equals("Buyer"))
 
 			{
+				session.setAttribute("userObj",bobj);
 				mv = new ModelAndView("buyerSuccess");
 
 			} else if (bobj.getRole().equals("Seller")) {
