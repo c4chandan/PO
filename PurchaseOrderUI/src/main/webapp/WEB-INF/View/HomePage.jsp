@@ -91,8 +91,9 @@ table th, table td {
 
 	</div>
 
+
 	<h1 style="text-align: center; font-family: verdana; color: green">
-		${msj}</h1>
+		${msg}</h1>
 
 	<hr />
 

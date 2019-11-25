@@ -27,14 +27,16 @@ public class HomeController {
 	BuyerService service;
 
 	// HomePage
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String homeController(ModelMap map) {
-
-		map.addAttribute("msj", "Welcome to home page");
-
-		return "HomePage";
-
-	}
+	/*
+	 * @RequestMapping(value = "/", method = RequestMethod.GET) public String
+	 * homeController(ModelMap map) {
+	 * 
+	 * map.addAttribute("msj", "Welcome to home page");
+	 * 
+	 * return "HomePage";
+	 * 
+	 * }
+	 */
 
 	// calling Registration Page
 	@RequestMapping(value = "/getSignUpPage", method = RequestMethod.GET)

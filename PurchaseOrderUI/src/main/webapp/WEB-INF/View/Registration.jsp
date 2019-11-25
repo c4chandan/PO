@@ -75,9 +75,9 @@ table tr td {
 		<div class="jumbotron" align="center">
 			<h1>Registration</h1>
 		</div>
-		<f:form action="registerUser" method="post" modelAttribute="buyerObj">
+		<f:form action="registerUser" method="post" modelAttribute="buyerObj" class="form-group">
 			<table align="center"
-				class="form-group table-responsive table table-hover">
+				class=" table-responsive table table-hover table-borderless">
 				<tr>
 				<tr>
 					<td>Buyer Name</td>

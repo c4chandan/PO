@@ -62,14 +62,6 @@
     </ul>
   </div>
 </nav>
-
-
-
-
-
-
-
-
 welcome vendor
 
 
