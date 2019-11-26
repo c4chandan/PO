@@ -20,6 +20,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
+
 .error {
 	color: red;
 	FONT-FAMILY: Lucida Handwriting;
@@ -30,13 +31,13 @@
 	width: 1100px;
 	margin-left: 120px;
 	padding: 5px;
-	border: 1px solid black;
+	
 }
 </style>
 
 
 </head>
-<body id="box">
+<body id="box" >
 	<nav
 		class="navbar navbar-expand-md bg-dark navbar-dark navbar-fixed-top">
 	<!-- Brand --> <a class="navbar-brand" href="#">Purchase Order</a>
@@ -62,7 +63,7 @@
 	<br />
 
 <div class="container">
-  <div class="alert alert-success"  style="width:450px;text-align:center;margin-left:180px">
+  <div class="alert alert-success"  style="width:450px;text-align:center;margin-left:200px">
 				<f:errors path="*" />
 			<f:form action="Loginform" method="post" modelAttribute="login">
 
@@ -94,5 +95,6 @@
 	</div>
 
 	<h3 style="color: red; font-size: 15px">${msg}</h3>
+	
 </body>
 </html>

@@ -1,6 +1,6 @@
 package com.purchaseOrder.controller;
 
-import javax.servlet.http.HttpSession;
+/*import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +12,10 @@ public class LogoutController
 {
 	
 
-	  @RequestMapping(method=RequestMethod.POST)
+	  @RequestMapping(method=RequestMethod.GET)
 	  public String logout(HttpSession session) {
 	    session.invalidate();
 	    return "redirect:/Login";
 	  }
 	}
+*/

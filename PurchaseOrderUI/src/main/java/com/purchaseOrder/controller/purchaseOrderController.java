@@ -28,17 +28,11 @@ public class purchaseOrderController {
 	
 	@Autowired
 	PurchaseOrderDao purchaseOrderDao;
-	/*
-	@RequestMapping(value="/purchaseOrder",method=RequestMethod.POST)
-	public ModelAndView raisePurchaseOrder(@ModelAttribute("purchaseOrder") PurchaseOrder purchaseOrder,ModelMap map  ) {
-		System.out.println("i m here");
-		ModelAndView mv=new ModelAndView("SellerSuccess") ;
-		System.out.println("i am going to finish");
-		mv.addObject("msg","po is raised");
-		return null;
-		
-		
-	}*/
+
+	
+	@Autowired
+	CheckSession check;
+	
 	
 	@Autowired
 	HttpSession session;
@@ -51,6 +45,7 @@ public class purchaseOrderController {
 	
 	@RequestMapping(value="/raisePO",method=RequestMethod.POST)
 	public String raisePurchaseOrder(@RequestBody List<PurchaseOrderItems> purchaseOrderItemsList,ModelMap map) {
+		check.checkSession();
 		Buyer bObj=(Buyer)session.getAttribute("userObj");
 		
 		PurchaseOrder po=new PurchaseOrder();

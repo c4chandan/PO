@@ -1,5 +1,6 @@
 package com.purchaseOrder.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,10 +23,15 @@ import com.purchaseOrder.model.PurchaseOrder;
 import com.purchaseOrder.services.BuyerService;
 import com.purchaseOrder.services.PurchaseOrderServiceDao;
 
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
+
 @Controller
 public class HomeController {
 	@Autowired
 	BuyerService service;
+	
+	@Autowired
+	CheckSession check;
 
 	// HomePage
 	/*
@@ -85,11 +91,13 @@ public class HomeController {
 	
 	@Autowired
 	PurchaseOrderServiceDao poObj;
+	
+	
 
 	@RequestMapping(value = "/Loginform", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute("login") Buyer login) {
-
+		
 		System.out.println(login);
 
 		ModelAndView mv = null;
@@ -97,11 +105,11 @@ public class HomeController {
 		Buyer bobj = service.Validatelogin(login);
 
 		if (bobj != null) {
-
+			session.setAttribute("userObj",bobj);
 			if (bobj.getRole().equals("Buyer"))
 
 			{
-				session.setAttribute("userObj",bobj);
+				
 				
 				mv = new ModelAndView("buyerSuccess");
 
@@ -128,10 +136,26 @@ public class HomeController {
 
 	}
 	
+	@Autowired
+	HttpServletResponse response;
 	
-	/*
-	 * @RequestMapping(value="/logout",method=RequestMethod.POST) public String
-	 * logout(HttpSession session) { session.invalidate(); return "Login"; }
-	 * 
-	 */
+	@Autowired
+	HttpServletRequest request;
+	
+	  @RequestMapping(value="/logout",method=RequestMethod.GET)
+	  public String  logout(HttpSession session) {
+		  
+		  response.setHeader("Cache-Control","no-cache");
+		  response.setHeader("Cache-Control","no-store");
+		  response.setHeader("Pragma","no-cache");
+		  response.setDateHeader ("Expires", 0);
+		  session.removeAttribute("userObj");
+		    
+				return "HomePage";
+			
+		      }
+		 
+	  
+	
+
 }

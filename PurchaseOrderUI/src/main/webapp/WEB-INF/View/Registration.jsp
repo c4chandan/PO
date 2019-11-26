@@ -35,7 +35,7 @@ table tr td {
     width: 1100px;
     margin-left: 120px;
         padding:5px;
-      border :1px solid black;
+    
  }
 </style>
 

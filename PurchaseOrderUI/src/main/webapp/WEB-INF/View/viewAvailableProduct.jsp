@@ -26,7 +26,7 @@
 	width: 1100px;
 	margin-left: 120px;
 	padding: 5px;
-	border: 1px solid black;
+	
 }
 </style>
 
@@ -50,8 +50,8 @@
 			<li class="nav-item"><a class="nav-link" href="updateQuantity">Change
 					In Quantity</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-			<li class="nav-item"><a class="nav-link" href="HomePage.jsp">LogOut</a>
-			</li>
+		<li class="nav-item"><a class="nav-link" href="logout">LogOut</a>
+				</li>
 		</ul>
 	</div>
 	</nav>

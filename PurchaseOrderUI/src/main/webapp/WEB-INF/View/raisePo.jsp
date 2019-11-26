@@ -61,7 +61,7 @@
 	width: 1100px;
 	margin-left: 120px;
 	padding: 5px;
-	border: 1px solid black;
+	
 }
 </style>
 
@@ -93,7 +93,7 @@
 	<div class="container">
 
 		<h1 style="color: green;">Raise Po</h1>
-		<form action="purchaseOrder" method="post">
+		<form action="purchaseOrder" method="post" align="center">
 
 			<ul class="list-group list-group-horizontal">
 				<li class="list-group-item"><select class="form-control name"

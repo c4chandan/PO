@@ -1,5 +1,8 @@
 package com.purchaseOrder.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +30,13 @@ public class AddProductByVendorController {
 	@Autowired
 	ProductsDao productDao;
 	
+	@Autowired
+	CheckSession check;
 	
 	
 	@RequestMapping(value = "/getAllProducts", method = RequestMethod.GET)
 	public String viewAllProducts(ModelMap map) {
+		check.checkSession();
 		map.addAttribute("pObjDetails", productDao.viewAllProducts());  
 		
 		//call to method to view all products
@@ -41,6 +47,8 @@ public class AddProductByVendorController {
 	
 		@RequestMapping(value="/updateQuantity",method=RequestMethod.GET)
 		public String updateQuantity(ModelMap map) {
+			
+			check.checkSession();
 			map.addAttribute("pObjDetails", productDao.viewAllProducts());  
 			return "updateQuantity";    
 		}
@@ -48,7 +56,12 @@ public class AddProductByVendorController {
 		@RequestMapping(value="/updateQuantity",method=RequestMethod.POST)
 		public ModelAndView addInVendorproductTable(@RequestParam int pId  ,@RequestParam int quantity)
 		{
-			Buyer buyerObj=(Buyer)session.getAttribute("userObj");		 
+			
+			check.checkSession();
+			Buyer buyerObj=(Buyer)session.getAttribute("userObj");		
+			
+			System.out.println("buyerObj : "+buyerObj);
+			
 			AddProductByVendor addpId=vendorDaoObj.checkingProductbyVendor(buyerObj.getBuyer_Id(), pId);  
 			if(addpId!=null) {
 				addpId.setQuantity(addpId.getQuantity()+quantity);  
@@ -69,13 +82,14 @@ public class AddProductByVendorController {
 		@RequestMapping(value="getAllProductsByVendor",method=RequestMethod.GET)
 			public String getAllAvailableProductsOfVendor(ModelMap map) {
 			
+				check.checkSession();
 				Buyer buyerObj=(Buyer)session.getAttribute("userObj");
 				
 				int vendorId=buyerObj.getBuyer_Id();
 				
 				map.addAttribute("pObjDetails",vendorDaoObj.getAllProducts(vendorId));
 						
-				return "avilableProductsByVendor";
+				return "availableProductsByVendor";
 				
 
 }

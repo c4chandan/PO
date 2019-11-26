@@ -21,12 +21,21 @@
 	width: 1100px;
 	margin-left: 120px;
 	padding: 5px;
-	border: 1px solid black;
+
 }
 </style>
+<SCRIPT type="text/javascript">
+		console.log('I m here');
+    	window.history.forward();
+    	function noBack() {
+    		console.log('I m here 2');
+    		//window.history.forward();
+    		
+    	}
+	</SCRIPT>
 
-<body id="box">
-	<div clas="container">
+<body id="box" onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="noBack()">
+ 	<div clas="container">
 		<nav class="navbar navbar-expand-md bg-dark navbar-dark"> <!-- Brand -->
 		<a class="navbar-brand" href="#">Purchase Order</a>
 

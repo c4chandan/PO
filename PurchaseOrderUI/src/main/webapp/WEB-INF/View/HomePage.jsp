@@ -44,7 +44,7 @@ table th, table td {
 	width: 1100px;
 	margin-left: 120px;
 	padding: 5px;
-	border: 1px solid black;
+	
 }
 </style>
 <script>
@@ -60,7 +60,10 @@ table th, table td {
      }
      </script>
 </head>
-<body onload="moveSlide()" id="box">
+<body onload="moveSlide()" id="box" >
+
+
+
 
 	<nav
 		class="navbar navbar-expand-md bg-dark navbar-dark navbar-fixed-top">
