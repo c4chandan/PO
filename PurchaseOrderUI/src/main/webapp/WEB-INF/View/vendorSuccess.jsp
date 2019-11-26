@@ -53,7 +53,7 @@
         <a class="nav-link" href="#">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="getAllAvailableProductsByVendor">Available Products</a>
+        <a class="nav-link" href="getAllProductsByVendor">Available Products</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="getAllProducts">View All products</a>

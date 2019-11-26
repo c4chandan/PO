@@ -12,13 +12,13 @@ import com.purchaseOrder.model.PurchaseOrder;
 import com.purchaseOrder.services.PurchaseOrderServiceDao;
 
 @Service
+@Transactional
 public class PurchaseOrderServiceImpl implements PurchaseOrderServiceDao {
 
 	
 	@Autowired
 	PurchaseOrderDao purchaseOrderDao;
 	
-	@Transactional
 	@Override
 	public boolean addPurchaseOrder(PurchaseOrder pobj) {
 	

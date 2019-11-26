@@ -73,7 +73,7 @@ public class AddProductByVendorDaoImpl implements AddProductByVendorDao {
 			query.setParameter("b", productId); //calling vendorId and productId to check the productlist
 			List list = query.list();
 			if (list.size() != 0) {
-				return (AddProductByVendor) list.get(0);
+				return (AddProductByVendor)list.get(0);
 			}
 		}
 

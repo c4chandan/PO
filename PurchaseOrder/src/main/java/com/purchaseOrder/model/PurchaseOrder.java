@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,7 +28,7 @@ public class PurchaseOrder {
 	@JoinColumn(name="Seller_Id")
 	private Buyer sellerObj;
 	
-	@OneToMany(mappedBy="purchaseOrderObj",cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="purchaseOrderObj",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<PurchaseOrderItems> purchaseOrderItemsObj;
 
 	private String status;
@@ -37,6 +38,7 @@ public class PurchaseOrder {
 	}
 	
 
+	
 	public void setPurchaseOrderId(int purchaseOrderId) {
 		this.purchaseOrderId = purchaseOrderId;
 	}

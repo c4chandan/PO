@@ -38,7 +38,7 @@
 			<tbody>
 				<c:forEach items="${pObjDetails}" var="obj">
 					<tr>
-						<td>${obj.productObj.productName}</td>
+						<td>${obj.product_Obj.productName}</td>
 						<td>${obj.quantity}</td>
 					</tr>
 				</c:forEach>

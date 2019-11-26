@@ -20,7 +20,7 @@ public class AddProductByVendor {
 
 	@OneToOne
 	@JoinColumn(name="productId",insertable=false,updatable=false)
-	Products product_Obj;
+	private Products product_Obj;
 
 	public int getId() {
 		return id;
@@ -54,6 +54,8 @@ public class AddProductByVendor {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
+	
 
 	public Products getProduct_Obj() {
 		return product_Obj;

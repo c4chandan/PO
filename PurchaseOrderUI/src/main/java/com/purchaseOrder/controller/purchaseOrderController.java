@@ -10,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.purchaseOrder.dao.BuyerDao;
@@ -38,6 +39,7 @@ public class purchaseOrderController {
 	
 	@Autowired
 	ProductsDao productDao;
+	
 	//this is used to raised the po to database on the basis of productid and purchaseOrderItems
 	@RequestMapping(value="/raisePO",method=RequestMethod.POST)
 	public String raisePurchaseOrder(@RequestBody List<PurchaseOrderItems> purchaseOrderItemsList,ModelMap map) {
@@ -55,6 +57,7 @@ public class purchaseOrderController {
 		}
 		po.setPurchaseOrderItemsObj(purchaseOrderItemsList);
 		System.out.println("Purchase Order : "+po);
+		po.setStatus("Sent to Seller");
 		purchaseOrderDao.addPurchaseOrder(po);
 		map.addAttribute("msg","Purchase Order has been raised succesfully...");
 		return "success";
@@ -66,11 +69,14 @@ public class purchaseOrderController {
 	}
 	
 	@RequestMapping(value = "/viewAllpurchaseOrder", method = RequestMethod.GET)
-	public String homeController(ModelMap map) {
+	public String viewAllPurchaseorder(ModelMap map,@RequestParam(required=false) String msg) {
 		boolean r=check.checkSession();
 		if(r) {
-		map.addAttribute("productDetails", purchaseOrderDao.viewAllPo());
-		return "viewAllPo";
+			
+			List<PurchaseOrder> pOlist=purchaseOrderDao.viewAllPo();
+				map.addAttribute("pOlist", pOlist);
+			session.setAttribute("pOlist",pOlist);
+					return "viewAllPo";
 		}
 		else {
 			return "redirect:/getLoginForm";

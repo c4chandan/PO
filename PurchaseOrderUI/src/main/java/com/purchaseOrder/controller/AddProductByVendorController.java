@@ -6,10 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,22 +36,31 @@ public class AddProductByVendorController {
 	
 	@Autowired
 	CheckSession check;
-	
+
+
+
+	private static final Logger logger = Logger.getLogger(AddProductByVendorController.class);
 	
 	@RequestMapping(value = "/getAllProducts", method = RequestMethod.GET)
 	public String viewAllProducts(ModelMap map) {
 		boolean r=check.checkSession();
 		if(r) {
-		map.addAttribute("pObjDetails", productDao.viewAllProducts());  
-		
-		//call to method to view all products
-		
-		return "viewAvailableProduct";   
+			try {
+				logger.info("you are in vendorcontroller to viewAllProducts");
+				map.addAttribute("pObjDetails", productDao.viewAllProducts());  
+				//call to method to view all products
+				return "viewAvailableProduct";   
+						
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error("error in registerUserController" + e.getMessage());
+			}
 		}
 		else {
 			return "redirect:/getLoginForm";
 			
 	}
+		return null;
 		
 	}
 	
@@ -67,7 +78,7 @@ public class AddProductByVendorController {
 		}
 
 		@RequestMapping(value="/updateQuantity",method=RequestMethod.POST)
-		public ModelAndView addInVendorproductTable(@Valid @RequestParam int pId  ,@RequestParam int quantity,BindingResult result)
+		public ModelAndView addInVendorproductTable(@RequestParam int pId  ,@RequestParam int quantity,@ModelAttribute("userObj") Buyer buyer ,BindingResult result)
 		{
 			
 			if(result.hasErrors())

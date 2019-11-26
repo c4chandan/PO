@@ -2,10 +2,16 @@ package com.purchaseOrder.serviceImpl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
 import com.purchaseOrder.model.AddProductByVendor;
 import com.purchaseOrder.model.Products;
 import com.purchaseOrder.services.AddProductByVendordaoService;
 
+@Service
+@Transactional
 public class AddProductByVendorDaoImpl implements AddProductByVendordaoService {
 
 	@Override

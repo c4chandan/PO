@@ -46,7 +46,7 @@ public class PurchaseOrderImpl implements PurchaseOrderDao {
 	public List<PurchaseOrder> viewAllPo() {
 		try {
 			Session session=sessionFactory.getCurrentSession();
-			Query query=session.createQuery("from com.purchaseOrder.model.PurchaseOrderItems");
+			Query query=session.createQuery("from com.purchaseOrder.model.PurchaseOrder where status='Sent to Seller'");
 			return query.list();
 			}
 			catch(Exception e){

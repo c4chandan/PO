@@ -2,6 +2,8 @@ package com.purchaseOrder.daoImpl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +15,7 @@ import com.purchaseOrder.dao.BuyerDao;
 import com.purchaseOrder.model.Buyer;
 
 @Repository("userDao")
-@org.springframework.transaction.annotation.Transactional
+@Transactional
 public class BuyerDaoImpl implements BuyerDao {
 
 	@Autowired

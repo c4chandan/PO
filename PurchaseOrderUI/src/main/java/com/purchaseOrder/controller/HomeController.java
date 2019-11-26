@@ -1,6 +1,6 @@
 package com.purchaseOrder.controller;
 
-import java.util.List;
+
 import org.apache.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,8 +56,10 @@ public class HomeController {
 			mv.addObject("error", "User has not registered ..... plzz try again");
 			return mv;
 		}
-
+		
+			
 		try {
+			logger.info("In registerUser Controller");
 			ModelAndView mv = new ModelAndView("Login");
 			mv.addObject("login", new Buyer());
 			service.registerBuyer(buyerObj);
@@ -95,6 +97,7 @@ public class HomeController {
 		System.out.println(login);
 
 		try {
+			logger.info("You are in LoginformController");
 			ModelAndView mv = null;
 
 			Buyer bobj = service.Validatelogin(login);
@@ -109,9 +112,6 @@ public class HomeController {
 
 				} else if (bobj.getRole().equals("Seller")) {
 
-					/*List<PurchaseOrder> pObj = poObj.viewAllPo();
-					mv.addObject("poObj", pObj);
-					System.out.println("I am in login procerss and the value of pobj is " + pObj + " ");*/
 					mv = new ModelAndView("SellerSuccess");
 
 				}

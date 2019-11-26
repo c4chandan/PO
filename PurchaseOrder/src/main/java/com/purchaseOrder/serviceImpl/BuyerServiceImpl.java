@@ -13,7 +13,7 @@ import com.purchaseOrder.model.Buyer;
 import com.purchaseOrder.model.Products;
 import com.purchaseOrder.services.BuyerService;
 
-@Service
+@Service("buyerService")
 @Transactional
 public class BuyerServiceImpl implements BuyerService {
 
