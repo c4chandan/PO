@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Raise Po</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -63,6 +63,10 @@
 	padding: 5px;
 	
 }
+
+.div{
+clear:both;
+}
 </style>
 
 </head>
@@ -80,24 +84,21 @@
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
 		<ul class="navbar-nav">
 			<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-			<li class="nav-item"><a class="nav-link" href="getSignUpPage">Registration</a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="getLoginForm">Login</a>
-			</li>
 			<li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+				<li class="nav-item"><a class="nav-link" href="logout">LogOut</a>
+			</li>
 		</ul>
 	</div>
 	</nav>
 
 	<br />
 	<div class="container">
-
+		${msg}
 		<h1 style="color: green;">Raise Po</h1>
-		<form action="purchaseOrder" method="post" align="center">
+		<form action="purchaseOrder" method="post"  align="center" style="background-color: lightcyan;" class="div" id="confirm">
 
-			<ul class="list-group list-group-horizontal">
-				<li class="list-group-item"><select class="form-control name"
-					name="items">
+			<ul class="list-group list-group-horizontal"  align="center">
+				<li class="list-group-item"><select class="form-control name"	name="items">
 						<option value="">Select your products</option>
 						<c:forEach items="${productDetails}" var="pObj">
 							<option value="${pObj.productId} ">${pObj.productName}</option>
@@ -109,12 +110,11 @@
 					id="quantity" required /></li>
 
 			</ul>
-			<br /> <input type="button" value="Add"
-				class="btn btn-success add-row" /><br /> <br />
+			<br /> <input type="button" value="Add" id="portests"	class="btn btn-success add-row" /><br /> <br />
 
-			<table class="table table-responsive  table-hover table-striped">
-				<thead class="thead-dark">
-					<tr>
+			<table class="table table-responsive  table-hover table-striped" align="center"  style="display: hidden;">
+				<thead class="thead-dark" >
+					<tr class="test">
 						<th>Select</th>
 						<th>Product Id</th>
 						<th>Product Name</th>
@@ -127,40 +127,25 @@
 			</table>
 			<div class="row">
 				<div class="col-4">
-					<button type="button" class="delete-row btn btn-danger">Delete
-						Row</button>
+					<button type="button" class="delete-row btn btn-danger">Delete item</button>
 				</div>
 				<div class="col-4">
-					<input type="button" value="submit" class="btn btn-primary"
-						id="raisePO" />
+					<input type="button" value="submit" class="btn btn-info getConfirmation"	id="raisePO" />
 				</div>
 			</div>
-
-
 		</form>
 	</div>
-</body>
+
 <script>
 		$(document).ready(function(){
-			 
 			var purchaseOrderList = [];
 	        $("#raisePO").click(function() {
-	        	console.log('Hello 1');
 	        	var table = $("table tbody");
-	        	console.log('Hello 2');
-	        	 
 	        	table.find('tr').each(function (i, el) {
-	        		 console.log('Hello 3');
 	        	        var $tds = $(this).find('td'),
-	        	        	
 	        	            pId = $tds.eq(1).text(),
 	        	            Quantity = $tds.eq(3).text();
-	        	        
-	        	        // do something with productId, product, Quantity
-	        	        
-	        	        
-	        	        
-	        	        var myObj = {
+	        	   	       var myObj = {
 	        	        		  productId: pId,
 	        	        		  quantity:Quantity
 	        	        		  
@@ -168,9 +153,8 @@
 	        	        purchaseOrderList.push(myObj);
 	        	    });
 	        	console.log(purchaseOrderList);
-	        	
-	         
-	        $.ajax({
+	        	/* use this to fetch the data on controller on the basis of product id  */
+	         $.ajax({
 	            type: "POST",
 	            url: "raisePO",
 	            data: JSON.stringify(purchaseOrderList),
@@ -185,7 +169,30 @@
 	        });
 		});
 		});
+	
+		/*used this jquery to confirm the submit of po  */
+		$(document).ready(function() {
+			$('.getConfirmation').click(function(){
+				var a=confirm("Are you Sure u want to submit this");
+				if(a==true)
+					{
+					$("#confirm").submit
+					}
+				else
+					{
+					return false;
+					}
+			});
+		 });
+				
+		 $(document).ready(function(){
+		        $('#portests').on('click',function(){   
+		        $('.test').show();
+		        
+		   });
+		});
 	</script>
+	</body>
 </html>
 
 

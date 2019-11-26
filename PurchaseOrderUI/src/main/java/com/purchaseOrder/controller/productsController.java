@@ -21,7 +21,7 @@ public class productsController {
 	
 	@Autowired
 	CheckSession check;
-	
+	//this is used to show all the data on the select option on jsp page
 	@RequestMapping(value = "/RaisePo", method = RequestMethod.GET)
 	public String homeController(ModelMap map) {
 		boolean r=check.checkSession();
@@ -35,6 +35,7 @@ public class productsController {
 
 	}
 
+	
 	@RequestMapping(value = "/viewAllProducts", method = RequestMethod.GET)
 	public ModelAndView getAllProducts() {
 		check.checkSession();

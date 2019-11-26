@@ -26,6 +26,14 @@
      
  }
 </style>
+<SCRIPT type="text/javascript">
+		console.log('I m here');
+    	window.history.forward();
+    	function noBack() {
+    		window.history.forward();
+    		
+    	}
+	</SCRIPT>
 
 </head>
 
@@ -62,8 +70,7 @@
   </div>
 </nav>
 welcome vendor
-
-
+<br/>
 
 </body>
 </html>

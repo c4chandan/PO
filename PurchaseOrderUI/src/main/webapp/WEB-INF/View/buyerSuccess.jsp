@@ -28,8 +28,7 @@
 		console.log('I m here');
     	window.history.forward();
     	function noBack() {
-    		console.log('I m here 2');
-    		//window.history.forward();
+    		window.history.forward();
     		
     	}
 	</SCRIPT>

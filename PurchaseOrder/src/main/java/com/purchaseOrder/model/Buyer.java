@@ -42,7 +42,7 @@ public class Buyer {
 
 	@Pattern(regexp="([0-9]{10})")
 	@NotEmpty
-	@Max(value=10,message="Mobile no should be equal to 10 digit")
+	
 	private String mobile_no;
 
 	

@@ -1,6 +1,6 @@
 package com.purchaseOrder.controller;
 
-import java.io.IOException;
+
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,7 +19,6 @@ public class CheckSession {
 	
 	boolean checkSession(){
 		
-		System.out.println("I m check Session");
 		Object obj=session.getAttribute("userObj");
 		if(obj==null) {
 			return false;

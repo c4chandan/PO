@@ -121,7 +121,10 @@ table tr td {
 				</tr>
 			</table>
 		</f:form>
-		${error}
+	<%-- 	<c:if test="${not empty msg}"> 
+<span class="alert alert-danger">${error}</span><br/>
+</c:if> --%>
+		
 	</div>
 
 </body>

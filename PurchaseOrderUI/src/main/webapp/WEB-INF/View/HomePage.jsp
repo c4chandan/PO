@@ -58,6 +58,8 @@ table th, table td {
                     imgno = 0;
                 window.setTimeout("moveSlide()", 5000);
      }
+            
+            
      </script>
 </head>
 <body onload="moveSlide()" id="box" >

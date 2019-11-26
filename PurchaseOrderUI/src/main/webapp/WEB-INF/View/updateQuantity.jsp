@@ -93,7 +93,9 @@
 			</tbody>
 		</table>
 		</form>
-
+<c:if test="${not empty msg}"> 
+<span class="alert alert-success">${msg}</span><br/>
+</c:if>
 </div>
 
 </body>

@@ -15,19 +15,19 @@ public class WelcomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView getWelcome() {
-
-		//logs debug message
-		if(logger.isDebugEnabled()){
-			logger.debug("getWelcome is executed!");
+		try {
+			logger.info("In WelcomeController");
+			ModelAndView model = new ModelAndView("HomePage");
+			model.addObject("msg", "Hello project i m logger");
+			return model;
+				
+		} catch (Exception e) {
+			logger.error("This is Error message "+e.getMessage());
+			
 		}
+		return null;
 		
-		//logs exception
-		logger.error("This is Error message", new Exception("Testing"));
-		
-		ModelAndView model = new ModelAndView("HomePage");
-		model.addObject("msg", "Hello project i m logger");
-		return model;
-
 	}
+	
 
 }

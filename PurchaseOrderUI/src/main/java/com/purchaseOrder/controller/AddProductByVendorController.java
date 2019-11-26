@@ -4,10 +4,12 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,29 +38,47 @@ public class AddProductByVendorController {
 	
 	@RequestMapping(value = "/getAllProducts", method = RequestMethod.GET)
 	public String viewAllProducts(ModelMap map) {
-		check.checkSession();
+		boolean r=check.checkSession();
+		if(r) {
 		map.addAttribute("pObjDetails", productDao.viewAllProducts());  
 		
 		//call to method to view all products
-		return "viewAvailableProduct";    //jsp page showing all products detail
-
+		
+		return "viewAvailableProduct";   
+		}
+		else {
+			return "redirect:/getLoginForm";
+			
 	}
-
+		
+	}
 	
 		@RequestMapping(value="/updateQuantity",method=RequestMethod.GET)
 		public String updateQuantity(ModelMap map) {
-			
-			check.checkSession();
+			boolean r=check.checkSession();
+			if(r) {
 			map.addAttribute("pObjDetails", productDao.viewAllProducts());  
 			return "updateQuantity";    
 		}
+			else
+			{
+				return  "redirect:/getLoginForm";
+			}
+		}
 
 		@RequestMapping(value="/updateQuantity",method=RequestMethod.POST)
-		public ModelAndView addInVendorproductTable(@RequestParam int pId  ,@RequestParam int quantity)
+		public ModelAndView addInVendorproductTable(@Valid @RequestParam int pId  ,@RequestParam int quantity,BindingResult result)
 		{
 			
-			check.checkSession();
-			Buyer buyerObj=(Buyer)session.getAttribute("userObj");		
+			if(result.hasErrors())
+			{
+
+				ModelAndView mv = new ModelAndView("updateQuantity");
+				mv.addObject("error", "quantity not updated");
+				return mv;
+			}
+			else {
+				Buyer buyerObj=(Buyer)session.getAttribute("userObj");		
 			
 			System.out.println("buyerObj : "+buyerObj);
 			
@@ -72,17 +92,20 @@ public class AddProductByVendorController {
 				addpId.setProductId(pId);
 				addpId.setQuantity(quantity);
 			}
+			
+			
 			vendorDaoObj.addProduct(addpId); 
-			ModelAndView mv=new ModelAndView("vendorSuccessPage");
+			ModelAndView mv=new ModelAndView("updateQuantity");
 			mv.addObject("msg","Product Quantity Added Succesfully");
 			return mv;
 
 }
-		
+		}
 		@RequestMapping(value="getAllProductsByVendor",method=RequestMethod.GET)
 			public String getAllAvailableProductsOfVendor(ModelMap map) {
 			
-				check.checkSession();
+			boolean r=check.checkSession();
+			if(r) {
 				Buyer buyerObj=(Buyer)session.getAttribute("userObj");
 				
 				int vendorId=buyerObj.getBuyer_Id();
@@ -90,7 +113,13 @@ public class AddProductByVendorController {
 				map.addAttribute("pObjDetails",vendorDaoObj.getAllProducts(vendorId));
 						
 				return "availableProductsByVendor";
+			}
+				else
+				{
+					return  "redirect:/getLoginForm";
+				}
+			}
 				
 
-}
+
 }
